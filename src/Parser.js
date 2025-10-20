@@ -1,6 +1,8 @@
 class Parser {
     parse(input) {
-        if (!input) return []; // TODO null, undefined 예외처리
+        if (input === null || input === undefined) {
+            throw new Error('[ERROR] 입력값이 null 또는 undefined입니다.');
+        }
         if (input === '') return [];
         return this.extractNumbersString(input);
     }
