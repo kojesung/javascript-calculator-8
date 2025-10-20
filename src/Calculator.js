@@ -1,5 +1,5 @@
 class Calculator {
-    sumListElements(list) {
+    static sumListElements(list) {
         if (!Array.isArray(list)) {
             throw new Error('[ERROR] 배열이 아닙니다.');
         }

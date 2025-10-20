@@ -1,16 +1,16 @@
 class Parser {
-    parse(input) {
+    static parse(input) {
         if (input === null || input === undefined) {
             throw new Error('[ERROR] 입력값이 null 또는 undefined입니다.');
         }
         if (input === '') return [];
         return this.extractNumbersString(input);
     }
-    getCustomSeparator(input) {
+    static getCustomSeparator(input) {
         const match = input.match(/^\/\/(.+?)(?:\\n|\n)/);
         return match ? match[1] : null;
     }
-    extractNumbersString(input) {
+    static extractNumbersString(input) {
         const separator = this.getCustomSeparator(input);
         if (separator) {
             const numbersString = input.substring(input.indexOf('\\n') + 2);
@@ -18,7 +18,7 @@ class Parser {
         }
         return this.convertStringToNumbers(input.split(/[,:]/));
     }
-    convertStringToNumbers(numberStrings) {
+    static convertStringToNumbers(numberStrings) {
         return numberStrings.map((str) => {
             const num = Number(str);
 
