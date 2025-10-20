@@ -17,7 +17,19 @@ class Parser {
         return this.convertStringToNumbers(input.split(/[,:]/));
     }
     convertStringToNumbers(numberStrings) {
-        return numberStrings.map((str) => Number(str)); // TODO 숫자가 아닌 값이 포함되어 있을 때 예외처리
+        return numberStrings.map((str) => {
+            const num = Number(str);
+
+            if (isNaN(num)) {
+                throw new Error('[ERROR] 숫자가 아닌 값이 포함되어 있습니다.');
+            }
+
+            if (num < 0) {
+                throw new Error('[ERROR] 음수는 입력할 수 없습니다.');
+            }
+
+            return num;
+        });
     }
 }
 
